@@ -1,0 +1,5 @@
+apiVersion: v2
+name: ai-resource-monitor
+description: Kyma-ready AI usage monitoring and resource impact dashboard
+version: 0.1.0
+appVersion: "0.1.0"

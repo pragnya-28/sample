@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Resource Monitor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Kyma platform operations</p>
+          <h1>AI Resource Impact Monitor</h1>
+        </div>
+        <button id="logoutBtn" class="secondary hidden">Logout</button>
+      </header>
+
+      <main>
+        <section id="loginCard" class="card auth-card">
+          <h2>Platform login</h2>
+          <form id="loginForm">
+            <label>
+              Username
+              <input id="username" name="username" type="text" value="ops-admin" required />
+            </label>
+            <label>
+              Password
+              <input id="password" name="password" type="password" value="admin123" required />
+            </label>
+            <button type="submit">Sign in</button>
+          </form>
+          <p id="loginError" class="error hidden"></p>
+        </section>
+
+        <section id="dashboard" class="hidden">
+          <div class="summary-grid">
+            <div class="stat card">
+              <span class="label">Total tokens</span>
+              <strong id="totalTokens">0</strong>
+            </div>
+            <div class="stat card">
+              <span class="label">Compute hours</span>
+              <strong id="computeHours">0</strong>
+            </div>
+            <div class="stat card">
+              <span class="label">Electricity</span>
+              <strong id="electricity">0 kWh</strong>
+            </div>
+            <div class="stat card warning">
+              <span class="label">Resource index</span>
+              <strong id="resourceIndex">0</strong>
+            </div>
+          </div>
+
+          <div class="content-grid">
+            <div class="card">
+              <h3>Top usage sources</h3>
+              <ul id="sourceList" class="list"></ul>
+            </div>
+
+            <div class="card">
+              <h3>Recent AI events</h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Source</th>
+                    <th>Model</th>
+                    <th>Tokens</th>
+                    <th>Impact</th>
+                  </tr>
+                </thead>
+                <tbody id="usageTableBody"></tbody>
+              </table>
+            </div>
+
+            <div class="card wide">
+              <h3>Audit log</h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th>User</th>
+                    <th>Action</th>
+                    <th>Resource</th>
+                    <th>Timestamp</th>
+                  </tr>
+                </thead>
+                <tbody id="auditTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>
